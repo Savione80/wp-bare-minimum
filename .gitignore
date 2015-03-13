@@ -1,0 +1,7 @@
+.vagrant/
+project/app/
+puppet/Puppetfile.lock
+puppet/modules/
+puppet/vendor/
+puppet/.tmp/
+puppet/.librarian/
