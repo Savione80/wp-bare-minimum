@@ -43,17 +43,34 @@ We are ready to type
 $ vagrant up
 ```
 And wait for the machine to be created and the environment to be setted up. Take into account that it will take some time, like 10 minutes to download all the dependencies, modules and stuff.
+<br>
+At the end of this process you could probably have an error due to the fact that NFS is not yet installed on the guest machine. I'm working on it, please be patients, below there's a workaround.
 
 ### What's next
 Out-of-the-box you'll have a dedicated url inside your DNS to `www.wprova.lo` and an apache vhost pointing to the folder `project/app/` that you can change within the `puppet/manifests/bare_minimum.pp`.
-#### Test it
-If you now point your browser to `http://www.wprova.lo/` you should be able to the take the 5 minutes installation of wordpress.
 #### SSH access
 If you need to access your guest machine you can do this by typing
 ```shell
 $ ssh vagrant@www.prova.lo
 ```
-Using `vagrant` as password. This is a sudoer, so you can eventually type `sudo su` to screw everything up. :P 
+Using `vagrant` as password. This is a sudoer, so you can eventually type `sudo su` to make what you want. :P
+#### Installing NFS on your guest machine
+Last step we need to do is to install NFS server on our machine in order to have the host machine machine inside the guest one. 
+<br>
+Simply log in by SSH and type
+```shell
+$ sudo apt-get install nfs-kernel-server
+```
+Exit, halt the machine by typing
+```shell
+$ vagrant halt
+```
+And restart everything by typing
+```shell
+$ vagrant up
+```
+#### Test it
+If you now point your browser to `http://www.wprova.lo/` you should be able to the take the 5 minutes installation of wordpress.
 
 
 
