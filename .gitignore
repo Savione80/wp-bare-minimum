@@ -1,5 +1,4 @@
 .vagrant/
-project/app/
 puppet/Puppetfile.lock
 puppet/modules/
 puppet/vendor/
