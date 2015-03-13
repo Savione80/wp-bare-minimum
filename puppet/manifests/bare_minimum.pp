@@ -12,16 +12,6 @@ node default {
   php::module {  "mysql": }
   php::module {  "xdebug": }
 
-  #php::mod {  "xdebug":
-    #disable => true,
-    #remote_enable => on,
-    #remote_handler=>dbgp,
-    #remote_mode=>req,
-    #remote_host=>192.168.30.1,
-    #remote_port=>9000,
-    #max_nesting_level=>1000,
-  #}
-
   apache::vhost { 'www.wprova.lo':
     port    => 80,
     docroot => '/vagrant/app',
@@ -37,7 +27,6 @@ node default {
   }
 
   file { 'xdebug':
-#    path    => '/etc/php5/mods-available/xdebug.ini'
     path    => '/etc/php5/apache2/conf.d/20-xdebug.ini',
     ensure  => '/vagrant/resources/xdebug.ini',
     require => Class['php'],
